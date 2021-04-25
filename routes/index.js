@@ -36,78 +36,29 @@ mongoose.connect(dbURI, options).then(
   }
 );
 
+
 /* GET home page. */
 router.get('/', function(req, res) {
   res.sendFile('index.html');
 });
 
 
-/* GET all IDs */
-router.get('/IDs', function(req, res) {
-  // find {  takes values, but leaving it blank gets all}
-  IDs.find({}, (err, AllIDs) => {
-    if (err) {
-      console.log(err);
-      console.log("Error getting all IDs");
-      res.status(500).send(err);
-    }
-    res.status(200).json(AllIDs);
-  });
-});
+/* post new Music data and push to Mongo */
+router.post('/NewMusic', function(req, res) {
 
-
-/* post a new ToDo and push to Mongo */
-router.post('/NewCD', function(req, res) {
-
-    let oneNewCD = new IDs(req.body);  // call constuctor in IDs code that makes a new mongo ToDo object
+    let oneNewMusic = new IDs(req.body);  // call constuctor in IDs code that makes a new mongo ToDo object
     console.log(req.body);
-    oneNewCD.save((err, music) => {
+    oneNewMusic.save((err, music) => {
       if (err) {
         console.log("Error pushing to Mongo");
         res.status(500).send(err);
       }
       else {
+        console.log("New Music Data: ");
       console.log(music);
       res.status(201).json(music);
       }
     });
-});
-
-
-router.delete('/DeleteToDo/:id', function (req, res) {
-  IDs.deleteOne({ _id: req.params.id }, (err, note) => { 
-    if (err) {
-      res.status(404).send(err);
-    }
-    res.status(200).json({ message: "ToDo successfully deleted" });
-  });
-});
-
-// just add the time and date here like completed = true, time = current time
-router.put('/UpdateToDo/:id', function (req, res) {
-  IDs.findOneAndUpdate(
-    { _id: req.params.id },
-    { title: req.body.title, detail: req.body.detail, priority: req.body.priority,   completed: req.body.completed },
-   { new: true },
-    (err, todo) => {
-      if (err) {
-        res.status(500).send(err);
-    }
-    res.status(200).json(todo);
-    })
-  });
-
-
-/* GET one IDs */
-router.get('/FindToDo/:id', function(req, res) {
-  console.log(req.params.id );
-  IDs.find({ _id: req.params.id }, (err, oneToDo) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send(err);
-    }
-    res.status(200).json(oneToDo);
-  });
 });
 
 module.exports = router;
