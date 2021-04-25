@@ -1,8 +1,32 @@
- body {
-    margin: 50px;
+  body 
+  {
+    margin: 20px;
     font-family: Helvetica, sans-serif;
-    font-size: 150%;
-}
+    font-size: 120%;
+    background-color: #cee9ff;
+  }
+
+  button
+  {
+    padding: 15px 32px;
+    background-color: #ecf6fd;
+    border-radius: 5px;
+    border:none;
+  }
+
+  button:hover {
+    border-style: solid;
+    padding: 12px 29px;
+    border-color: white;
+  }
+
+  input
+  {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border:none;
+  }
+
 .grid-container {
     display: grid;
     grid-template-columns: auto auto ;
