@@ -7,34 +7,36 @@ const mongoose = require("mongoose");
 // schema will enforce consistency in all our documents (records)
 const Schema = mongoose.Schema;
 
-const IDSchema = new Schema({
-  StoreID: {
+const IDsSchema = new Schema({
+  storeID: {
     type: Number,
     required: true
   },
-  SalesPersonOID: {
+  salesPersonID: {
     type: Number,
     required: true
   },
-  CdID: {
+  cdID: {
     type: Number,
     required: true
   },
-  PricePaid: {
+  pricePaid: {
     type: Number,
     required: true
   },
-  HourPurch: {
+  hourPurch: {
     type: Number,
-    required: false
+    default:0,
+    required: true
   },
-  DayPurch: {
+  dayPurch: {
     type: Number,
-    required: false
+    default:0,
+    required: true
   }
 });
 
-module.exports = mongoose.model("IDs", IDSchema);
+module.exports = mongoose.model("ID", IDsSchema);
 
 // our schema needs storeID SalesPersonID CdID PricePaid HourPurch DayPurch
 // i can add defaults if needed
