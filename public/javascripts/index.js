@@ -31,8 +31,6 @@ function Music(pStoreID, pSalesPersonID, pCdID, pPricePaid, pHourPurch, pDayPurc
             day++;
         } 
 
-        console.log(randomTime);
-
         var aStoreID = document.getElementById("StoreID").value;
         var aSalesPersonID = document.getElementById("SalesPersonID").value;
         var aCdID = document.getElementById("CdID").value;
@@ -77,8 +75,8 @@ function Music(pStoreID, pSalesPersonID, pCdID, pPricePaid, pHourPurch, pDayPurc
         var tSalesPersonID = document.getElementById("SalesPersonID").value;
         var tCdID = document.getElementById("CdID").value;
         var tPricePaid = document.getElementById("PricePaid").value;
-        var tHourPurch = aHourPurch;
-        var tDayPurch = aDayPurch;
+        var tHourPurch = hour;
+        var tDayPurch = day;
         
         var oneMusic = new Music(tStoreID, tSalesPersonID, tCdID, tPricePaid, tHourPurch, tDayPurch);
         console.log(oneMusic);
